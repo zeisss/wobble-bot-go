@@ -1,12 +1,13 @@
 package api
 
+// See wobble.api.Client#Subscribe() to get started with notifications
 type Subscription struct {
 	notifications chan *Notification
 	errors        chan error
 	stop          chan int
 }
 
-func NewSubscription() *Subscription {
+func newSubscription() *Subscription {
 	var sub Subscription
 
 	sub.notifications = make(chan *Notification)
@@ -16,7 +17,7 @@ func NewSubscription() *Subscription {
 	return &sub
 }
 
-func (this *Subscription) start(client *Client) {
+func (this *Subscription) loop(client *Client) {
 	var next_timestamp float64 = -1
 
 	for {

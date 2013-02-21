@@ -76,8 +76,8 @@ func (this *Client) GetCurrentUserId() (int, error) {
 }
 
 func (this *Client) SubscribeNotifications() *Subscription {
-	sub := NewSubscription()
-	go sub.start(this)
+	sub := newSubscription()
+	go sub.loop(this)
 	return sub
 }
 
