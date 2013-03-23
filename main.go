@@ -7,7 +7,7 @@ import (
 	"math/rand"
 	"os"
 	"time"
-	"wobble/api"
+	api "github.com/ZeissS/wobble-go-client"
 )
 
 func Connect(endpoint, email, password string) (*api.Client, error) {
